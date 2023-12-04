@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61iu4mn5x3xg"]
+
+[ext_resource type="Script" path="res://main/MenuContainer.gd" id="1_yk3ks"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -800.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yk3ks")
+aboutScene = "res://about/about.tscn"
+
+[node name="MainMenu" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="MenuContainer/MainMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+text = "START"
+flat = true
+
+[node name="Settings" type="Button" parent="MenuContainer/MainMenu"]
+layout_mode = 2
+text = "SETTINGS"
+flat = true
+
+[node name="About" type="Button" parent="MenuContainer/MainMenu"]
+layout_mode = 2
+text = "ABOUT"
+flat = true
+
+[node name="Exit" type="Button" parent="MenuContainer/MainMenu"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Start")
+text = "EXIT"
+flat = true
+
+[connection signal="pressed" from="MenuContainer/MainMenu/Start" to="MenuContainer" method="_on_start_pressed"]
+[connection signal="pressed" from="MenuContainer/MainMenu/Settings" to="MenuContainer" method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuContainer/MainMenu/About" to="MenuContainer" method="_on_about_pressed"]
+[connection signal="pressed" from="MenuContainer/MainMenu/Exit" to="MenuContainer" method="_on_exit_pressed"]
